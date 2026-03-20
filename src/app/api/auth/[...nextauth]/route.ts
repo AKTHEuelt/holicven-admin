@@ -10,7 +10,6 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        // Enkel admin-bruker - endre i produksjon!
         if (credentials?.username === "admin" && credentials?.password === "holicven2026") {
           return { id: "1", name: "Admin", email: "admin@holicven.no" };
         }
@@ -23,7 +22,7 @@ const handler = NextAuth({
   },
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60, // 24 timer
+    maxAge: 24 * 60 * 60,
   },
   secret: process.env.NEXTAUTH_SECRET || "holicven-secret-key-change-in-production",
 });

@@ -1,8 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --holicven-green: #A2D5AB;
   --holicven-dark: #1a1a1a;
+}
+
+@theme {
+  --color-holicven-green: #A2D5AB;
+  --color-holicven-dark: #1a1a1a;
 }
