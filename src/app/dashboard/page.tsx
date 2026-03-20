@@ -370,7 +370,7 @@ export default function DashboardPage() {
                   <input
                     type="text"
                     defaultValue="admin"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
+                    className="w-full bg-black border border-gray-600 rounded-lg px-4 py-3 text-white"
                   />
                 </div>
                 <div>
@@ -378,7 +378,7 @@ export default function DashboardPage() {
                   <input
                     type="password"
                     placeholder="Skriv nytt passord for å endre"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
+                    className="w-full bg-black border border-gray-600 rounded-lg px-4 py-3 text-white"
                   />
                 </div>
                 <button className="bg-holicven-green text-black font-bold px-6 py-3 rounded-lg hover:bg-holicven-green/80 transition">
@@ -395,7 +395,7 @@ export default function DashboardPage() {
                   <input
                     type="email"
                     placeholder="admin@holicven.no"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
+                    className="w-full bg-black border border-gray-600 rounded-lg px-4 py-3 text-white"
                   />
                 </div>
                 <p className="text-gray-500 text-sm">
