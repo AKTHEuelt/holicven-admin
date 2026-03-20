@@ -9,3 +9,11 @@
   --color-holicven-green: #A2D5AB;
   --color-holicven-dark: #1a1a1a;
 }
+
+body {
+  background-image: url('/newspaper.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: repeat;
+  background-color: rgba(255, 255, 255, 0.3);
+}

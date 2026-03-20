@@ -93,18 +93,20 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-holicven-dark">
+    <div className="min-h-screen relative" style={{ backgroundImage: "url('/newspaper.png')", backgroundSize: "100%", backgroundPosition: "center", backgroundRepeat: "repeat" }}>
+      <div className="absolute inset-0 bg-white/30"></div>
+      
       {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800 px-6 py-4">
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-holicven-green">
+      <header className="relative z-10 bg-black/90 border-b-2 border-black px-6 py-4 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-black">
             🎤 Høl i CV'en Admin
           </h1>
           <div className="flex items-center gap-4">
-            <span className="text-gray-400">{session.user?.name}</span>
+            <span className="text-gray-300">{session.user?.name}</span>
             <button
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="bg-red-500/20 text-red-400 px-4 py-2 rounded-lg hover:bg-red-500/30 transition"
+              className="bg-red-500 text-black px-4 py-2 rounded-lg hover:bg-red-600 transition font-medium"
             >
               Logg ut
             </button>
@@ -113,17 +115,17 @@ export default function DashboardPage() {
       </header>
 
       {/* Tabs */}
-      <div className="bg-gray-900 border-b border-gray-800">
+      <div className="relative z-10 bg-black/90 border-b-2 border-black backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex gap-1 overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-4 font-medium transition whitespace-nowrap ${
+                className={`px-6 py-4 font-bold transition whitespace-nowrap ${
                   activeTab === tab.id
-                    ? "text-holicven-green border-b-2 border-holicven-green"
-                    : "text-gray-400 hover:text-white"
+                    ? "text-black bg-white border-b-2 border-black"
+                    : "text-gray-300 hover:text-black hover:bg-white/10"
                 }`}
               >
                 {tab.icon} {tab.label}
@@ -134,44 +136,44 @@ export default function DashboardPage() {
       </div>
 
       {/* Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 py-8">
         {activeTab === "oversikt" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Dashboard Oversikt</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Dashboard Oversikt</h2>
             
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-                <p className="text-gray-400 text-sm mb-2">Nye Bestillinger</p>
-                <p className="text-4xl font-bold text-holicven-green">{newOrders}</p>
+              <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
+                <p className="text-gray-600 text-sm mb-2 font-medium">Nye Bestillinger</p>
+                <p className="text-4xl font-bold text-black">{newOrders}</p>
               </div>
-              <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-                <p className="text-gray-400 text-sm mb-2">Totalt Antall</p>
-                <p className="text-4xl font-bold text-white">{orders.length}</p>
+              <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
+                <p className="text-gray-600 text-sm mb-2 font-medium">Totalt Antall</p>
+                <p className="text-4xl font-bold text-black">{orders.length}</p>
               </div>
-              <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-                <p className="text-gray-400 text-sm mb-2">Total Inntekt</p>
-                <p className="text-4xl font-bold text-green-400">{totalRevenue.toFixed(0)} kr</p>
+              <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
+                <p className="text-gray-600 text-sm mb-2 font-medium">Total Inntekt</p>
+                <p className="text-4xl font-bold text-black">{totalRevenue.toFixed(0)} kr</p>
               </div>
-              <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-                <p className="text-gray-400 text-sm mb-2">Levert</p>
-                <p className="text-4xl font-bold text-blue-400">
+              <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
+                <p className="text-gray-600 text-sm mb-2 font-medium">Levert</p>
+                <p className="text-4xl font-bold text-black">
                   {orders.filter((o) => o.status === "levert").length}
                 </p>
               </div>
             </div>
 
             {/* Recent Orders */}
-            <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-800">
-                <h3 className="text-lg font-semibold text-white">Siste Bestillinger</h3>
+            <div className="bg-white/95 backdrop-blur rounded-xl border-2 border-black shadow-lg overflow-hidden">
+              <div className="px-6 py-4 border-b border-black">
+                <h3 className="text-lg font-semibold text-black">Siste Bestillinger</h3>
               </div>
               <div className="divide-y divide-gray-800">
                 {orders.slice(0, 5).map((order) => (
                   <div key={order.id} className="px-6 py-4 flex justify-between items-center">
                     <div>
-                      <p className="text-white font-medium">{order.customer_name}</p>
-                      <p className="text-gray-400 text-sm">{order.product_name}</p>
+                      <p className="text-black font-medium">{order.customer_name}</p>
+                      <p className="text-gray-600 text-sm">{order.product_name}</p>
                     </div>
                     <div className="text-right">
                       <span
@@ -198,9 +200,9 @@ export default function DashboardPage() {
 
         {activeTab === "bestillinger" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Alle Bestillinger</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Alle Bestillinger</h2>
             
-            <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+            <div className="bg-white/95 backdrop-blur rounded-xl border border-black overflow-hidden">
               <table className="w-full">
                 <thead className="bg-gray-800">
                   <tr>
@@ -216,8 +218,8 @@ export default function DashboardPage() {
                 <tbody className="divide-y divide-gray-800">
                   {orders.map((order) => (
                     <tr key={order.id} className="hover:bg-gray-800/50">
-                      <td className="px-6 py-4 text-gray-400">#{order.id}</td>
-                      <td className="px-6 py-4 text-white">
+                      <td className="px-6 py-4 text-gray-600">#{order.id}</td>
+                      <td className="px-6 py-4 text-black">
                         <div>{order.customer_name}</div>
                         <div className="text-gray-500 text-sm">{order.customer_email}</div>
                       </td>
@@ -245,7 +247,7 @@ export default function DashboardPage() {
                         <select
                           value={order.status}
                           onChange={(e) => updateOrderStatus(order.id, e.target.value)}
-                          className="bg-gray-800 text-white text-sm rounded-lg px-3 py-2 border border-gray-700 focus:outline-none focus:border-holicven-green"
+                          className="bg-gray-800 text-black text-sm rounded-lg px-3 py-2 border border-gray-700 focus:outline-none focus:border-holicven-green"
                         >
                           <option value="ny">Ny</option>
                           <option value="behandles">Behandles</option>
@@ -267,25 +269,25 @@ export default function DashboardPage() {
 
         {activeTab === "produkter" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Produkter</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Produkter</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product.id} className="bg-gray-900 rounded-xl border border-gray-800 p-6">
+                <div key={product.id} className="bg-white/95 backdrop-blur rounded-xl border border-black p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="bg-holicven-green/20 p-3 rounded-full text-2xl">☕</div>
                     <span
                       className={`px-3 py-1 rounded-full text-sm ${
                         product.active
                           ? "bg-green-500/20 text-green-400"
-                          : "bg-gray-500/20 text-gray-400"
+                          : "bg-gray-500/20 text-gray-600"
                       }`}
                     >
                       {product.active ? "Aktiv" : "Inaktiv"}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">{product.description}</p>
+                  <h3 className="text-xl font-bold text-black mb-2">{product.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-holicven-green font-bold text-xl">{product.price} kr</span>
                     <span className="text-gray-500 text-sm">{product.category}</span>
@@ -295,7 +297,7 @@ export default function DashboardPage() {
             </div>
 
             {products.length === 0 && (
-              <div className="bg-gray-900 rounded-xl border border-gray-800 p-12 text-center">
+              <div className="bg-white/95 backdrop-blur rounded-xl border border-black p-12 text-center">
                 <p className="text-gray-500">Ingen produkter ennå. Legg til produkter via API.</p>
               </div>
             )}
@@ -304,11 +306,11 @@ export default function DashboardPage() {
 
         {activeTab === "statistikk" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Statistikk</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Statistikk</h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-gray-900 rounded-xl border border-gray-800 p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Bestillinger per Status</h3>
+              <div className="bg-white/95 backdrop-blur rounded-xl border border-black p-6">
+                <h3 className="text-lg font-semibold text-black mb-4">Bestillinger per Status</h3>
                 <div className="space-y-4">
                   {["ny", "behandles", "sendt", "levert", "avbrutt"].map((status) => {
                     const count = orders.filter((o) => o.status === status).length;
@@ -331,8 +333,8 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="bg-gray-900 rounded-xl border border-gray-800 p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Populære Produkter</h3>
+              <div className="bg-white/95 backdrop-blur rounded-xl border border-black p-6">
+                <h3 className="text-lg font-semibold text-black mb-4">Populære Produkter</h3>
                 <div className="space-y-4">
                   {Object.entries(
                     orders.reduce((acc, o) => ({ ...acc, [o.product_name]: (acc[o.product_name] || 0) + 1 }), {} as Record<string, number>)
@@ -358,25 +360,25 @@ export default function DashboardPage() {
 
         {activeTab === "innstillinger" && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Innstillinger</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Innstillinger</h2>
             
-            <div className="bg-gray-900 rounded-xl border border-gray-800 p-6 max-w-2xl">
-              <h3 className="text-lg font-semibold text-white mb-4">Admin Bruker</h3>
+            <div className="bg-white/95 backdrop-blur rounded-xl border border-black p-6 max-w-2xl">
+              <h3 className="text-lg font-semibold text-black mb-4">Admin Bruker</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-gray-400 text-sm mb-2">Brukernavn</label>
+                  <label className="block text-gray-600 text-sm mb-2">Brukernavn</label>
                   <input
                     type="text"
                     defaultValue="admin"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-400 text-sm mb-2">Nytt Passord</label>
+                  <label className="block text-gray-600 text-sm mb-2">Nytt Passord</label>
                   <input
                     type="password"
                     placeholder="Skriv nytt passord for å endre"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
                   />
                 </div>
                 <button className="bg-holicven-green text-black font-bold px-6 py-3 rounded-lg hover:bg-holicven-green/80 transition">
@@ -385,21 +387,21 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-gray-900 rounded-xl border border-gray-800 p-6 max-w-2xl">
-              <h3 className="text-lg font-semibold text-white mb-4">E-post Innstillinger</h3>
+            <div className="bg-white/95 backdrop-blur rounded-xl border border-black p-6 max-w-2xl">
+              <h3 className="text-lg font-semibold text-black mb-4">E-post Innstillinger</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-gray-400 text-sm mb-2">E-post for Varslinger</label>
+                  <label className="block text-gray-600 text-sm mb-2">E-post for Varslinger</label>
                   <input
                     type="email"
                     placeholder="admin@holicven.no"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-black"
                   />
                 </div>
                 <p className="text-gray-500 text-sm">
                   Motta e-post når nye bestillinger kommer inn og varer sendes.
                 </p>
-                <button className="bg-blue-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-blue-500/80 transition">
+                <button className="bg-blue-500 text-black font-bold px-6 py-3 rounded-lg hover:bg-blue-500/80 transition">
                   Lagre E-post
                 </button>
               </div>
