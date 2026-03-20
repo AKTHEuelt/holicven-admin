@@ -118,7 +118,7 @@ export default function DashboardPage() {
       </header>
 
       {/* Tabs */}
-      <div className="relative z-10 bg-black/90 border-b-2 border-black backdrop-blur-sm">
+      <div className="relative z-10 bg-[#A2D5AB] border-b-2 border-black">
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex gap-1 overflow-x-auto">
             {tabs.map((tab) => (
@@ -127,8 +127,8 @@ export default function DashboardPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-4 font-bold transition whitespace-nowrap ${
                   activeTab === tab.id
-                    ? "text-black bg-white border-b-2 border-black"
-                    : "text-gray-300 hover:text-black hover:bg-white/10"
+                    ? "text-[#A2D5AB] bg-black border-b-2 border-[#A2D5AB]"
+                    : "text-black hover:text-[#A2D5AB] hover:bg-black/10"
                 }`}
               >
                 {tab.icon} {tab.label}
