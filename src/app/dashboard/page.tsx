@@ -97,11 +97,14 @@ export default function DashboardPage() {
       <div className="absolute inset-0 bg-white/30"></div>
       
       {/* Header */}
-      <header className="relative z-10 bg-black/90 border-b-2 border-black px-6 py-4 backdrop-blur-sm">
+      <header className="relative z-10 bg-[#A2D5AB] border-b-2 border-black px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-black px-4 py-2 bg-[#A2D5AB]">
-            Høl i CV'en Admin
-          </h1>
+          <div className="flex items-center gap-3">
+            <img src="/HØLICVEN.png" alt="Høl i CV'en" className="h-12 w-auto" />
+            <h1 className="text-2xl font-black text-black">
+              Admin
+            </h1>
+          </div>
           <div className="flex items-center gap-4">
             <span className="text-gray-300">{session.user?.name}</span>
             <button
