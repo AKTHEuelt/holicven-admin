@@ -99,8 +99,8 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="relative z-10 bg-black/90 border-b-2 border-black px-6 py-4 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-black">
-            🎤 Høl i CV'en Admin
+          <h1 className="text-2xl font-bold text-black px-4 py-2 bg-[#A2D5AB]">
+            Høl i CV'en Admin
           </h1>
           <div className="flex items-center gap-4">
             <span className="text-gray-300">{session.user?.name}</span>
@@ -145,19 +145,19 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
                 <p className="text-gray-600 text-sm mb-2 font-medium">Nye Bestillinger</p>
-                <p className="text-4xl font-bold text-black">{newOrders}</p>
+                <p className="text-5xl font-black text-black">{newOrders}</p>
               </div>
               <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
                 <p className="text-gray-600 text-sm mb-2 font-medium">Totalt Antall</p>
-                <p className="text-4xl font-bold text-black">{orders.length}</p>
+                <p className="text-5xl font-black text-black">{orders.length}</p>
               </div>
               <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
                 <p className="text-gray-600 text-sm mb-2 font-medium">Total Inntekt</p>
-                <p className="text-4xl font-bold text-black">{totalRevenue.toFixed(0)} kr</p>
+                <p className="text-5xl font-black text-black">{totalRevenue.toFixed(0)} kr</p>
               </div>
               <div className="bg-white rounded-xl p-6 border-2 border-black shadow-lg">
                 <p className="text-gray-600 text-sm mb-2 font-medium">Levert</p>
-                <p className="text-4xl font-bold text-black">
+                <p className="text-5xl font-black text-black">
                   {orders.filter((o) => o.status === "levert").length}
                 </p>
               </div>
